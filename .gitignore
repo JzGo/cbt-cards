@@ -14,3 +14,4 @@
 config/database.yml
 Gemfile.lock
 Guardfile
+db/schema.rb
