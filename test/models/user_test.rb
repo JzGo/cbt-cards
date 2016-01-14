@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class UserTest < Minitest::Test
+class UserTest < ActiveSupport::TestCase
 
   test "user fails if no name" do
     user1 = User.new
