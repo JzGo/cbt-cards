@@ -24,4 +24,9 @@ class UserTest < ActiveSupport::TestCase
     assert_not(user5.valid?, "User valid with duplicate email")
   end
 
+  test "User not saved if email not addressable" do
+    user6 = User.new(first_name: "Jim", last_name: "Doe", email: "myfakeemail")
+    assert_not(user6.valid?, "User valid without valid email")
+  end
+
 end
