@@ -75,6 +75,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.8)
     execjs (2.6.0)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     ffi (1.9.10)
     formatador (0.2.5)
     globalid (0.3.6)
@@ -219,6 +224,7 @@ DEPENDENCIES
   bootstrap-sass
   coffee-rails
   devise
+  factory_girl_rails
   guard
   guard-livereload (~> 2.4)
   jquery-rails
