@@ -8,8 +8,8 @@
       </div>
       <div class="modal-body">
 
-      <%= form_for(@user, :url => registration_path(:user)) do |f| %>
-        <!-- <%= devise_error_messages! %> -->
+      <%= form_for(:user, :url => registration_path(:user)) do |f| %>
+        <%= devise_error_messages! %>
 
       <div class="field">
         <%= f.label :email %><br />
