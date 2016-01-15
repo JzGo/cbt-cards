@@ -24,3 +24,19 @@
     margin-bottom: -3px;
     margin-top: 3px;
 }
+.btn-default.raised {
+    box-shadow: 0 3px 0 0 #888;
+    height: 30px;
+    width: 75px;
+}
+.btn-default.raised:active, .btn-info.active {
+    box-shadow: none;
+    margin-bottom: -3px;
+    margin-top: 3px;
+}
+.button-container {
+  padding: 30px;
+  padding-top: 40px;
+  margin-right: 65px;
+  text-align: right;
+}
