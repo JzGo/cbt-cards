@@ -29,4 +29,9 @@ class UserTest < ActiveSupport::TestCase
     assert_not(user6.valid?, "User valid without valid email")
   end
 
+  test "When user creates card, card belongs to user" do
+    user7 = FactoryGirl.build(:user_with_cards)
+    assert_not(user7.cards.nil?, "User does not return cards")
+  end
+
 end

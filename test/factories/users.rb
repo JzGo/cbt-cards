@@ -6,7 +6,7 @@ FactoryGirl.define do
     sequence(:password) { |n| "password#{n}"}
 
     factory :user_with_cards do
-      cards factory: :card
+      card factory: :card
     end
   end
 end

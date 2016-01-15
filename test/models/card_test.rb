@@ -21,4 +21,9 @@ class CardTest < ActiveSupport::TestCase
     card4 = Card.new(emotions: "happy", thoughts: "here", reflection: "there")
     assert_not(card4.valid?, "Card valid without intensity")
   end
+
+  test "Card has user" do
+    card5 = FactoryGirl.build(:card)
+    assert_not(card5.user.nil?, "Card returns no user")
+  end
 end
