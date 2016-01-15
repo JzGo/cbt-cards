@@ -13,4 +13,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import "bootstrap/theme";
- @import "welcome"
+ @import "welcome";
+
+.btn-info.raised {
+    box-shadow: 0 5px 0 0 #007299;
+}
+.btn-info.raised:active, .btn-info.active {
+    background: #33a6cc;
+    box-shadow: none;
+    margin-bottom: -3px;
+    margin-top: 3px;
+}
