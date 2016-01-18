@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
 
   has_many :cards
+
+  enum access: [:user, :provider]
 end
