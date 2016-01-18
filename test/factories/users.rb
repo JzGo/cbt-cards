@@ -6,7 +6,9 @@ FactoryGirl.define do
     sequence(:password) { |n| "password#{n}"}
 
     factory :user_with_cards do
-      card factory: :card
+      transient do
+        cards_count 5
+      end
     end
   end
 end

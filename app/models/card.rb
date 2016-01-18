@@ -3,4 +3,6 @@ class Card < ActiveRecord::Base
   validates :thoughts, presence: true
   validates :reflection, presence: true
   validates :intensity, presence: true
+
+  belongs_to :user
 end
