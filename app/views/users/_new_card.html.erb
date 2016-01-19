@@ -8,6 +8,8 @@
       </div>
       <div class="modal-body">
         <%= form_for(:card, :url => user_cards_path(current_user.id)) do |f| %>
+        
+        <input type="hidden" value="<%= current_user.id %>" name="card[user_id]">
 
         <div class="emotions-field">
           <%= f.label :emotions %><br>
@@ -33,7 +35,6 @@
       </div>
       <div class="modal-footer">
         <%= f.submit 'Add Card', { class: "btn btn-success"} %>
-        <!-- <button type="button" class="btn btn-primary">Sign In</button> -->
         <% end %>
       </div>
     </div>

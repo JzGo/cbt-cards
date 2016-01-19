@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :card do
-    emotions ["happy"]
+    emotions "happy"
     intensity "10"
     thoughts "so happy"
     reflection "but not too happy"

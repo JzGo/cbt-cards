@@ -2,11 +2,12 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
+    @card.save
     raise params.inspect
     if @card.save
       redirect_to(:back)
     else
-      redirect_to(:back)
+      render "users/oops"
     end
   end
 
