@@ -47,10 +47,19 @@ body {
   clear: both;
 }
 #user-dash {
-  padding: 50px;
+  height: 150px;
+  padding-left: 75px;
   padding-bottom: 0;
   font-size: 16px;
 }
 .u-dash {
+  background-color: #ddd;
   padding-right: 50px;
+  font-family: sans-serif;
+  box-shadow: 0px 2px 5px #888;
+  margin-right: 50px;
+}
+.content {
+  background-color: white;
+  box-shadow: 0px 2px 10px #888;
 }
