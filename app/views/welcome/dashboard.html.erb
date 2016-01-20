@@ -25,14 +25,18 @@
       </ul>
     <% end %>
   </div>
-
 </div>
 <br>
 <div class="col-md-6 col-md-offset-3">
   <% @cards.each do |card| %>
   <div class="list-group">
     <a href="/cards/<%= card.id %>" class="list-group-item">
-      <p class="list-group-item-emotion"><strong>Emotions: </strong><%= card.emotions %></p>
+      <p class="list-group-item-emotion"><strong>Emotions: </strong>
+        <% @emotions = card.emotions.split(', ') %>
+        <% @emotions.each do |emotion| %>
+          <span class="label label-default"><%= emotion %></span>
+        <% end %>
+      </p>
       <p class="list-group-item-intensity"><strong>Intensity: </strong><br><%= card.intensity %></p>
       <p class="list-group-item-thoughts"><strong>Thoughts: </strong><br><%= card.thoughts %></p>
       <p class="list-group-item-reflection"><strong>Reflection: </strong><br><%= card.reflection %></p>
