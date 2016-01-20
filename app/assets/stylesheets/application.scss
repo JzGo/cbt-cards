@@ -39,6 +39,7 @@ body {
   border-radius: 0;
 }
 .button-container {
+  display: inline;
   margin: 0;
 }
 .nav-pills {
@@ -74,4 +75,20 @@ body {
 }
 #control {
   height: 400px;
+}
+.navbar-brand {
+  padding-bottom: 0;
+}
+.navbar-brand {
+  font-size: 24px;
+  font-color: #000;
+}
+.list-group-item {
+  box-shadow: 0px 2px 5px #888;
+}
+.edit {
+  padding: 10px 0 5px 0;
+  text-align: center;
+  background-color: #ddd;
+  box-shadow: 0px 2px 5px #888;
 }
