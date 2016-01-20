@@ -27,40 +27,80 @@
   </div>
 </div>
 <br>
-<div class="col-md-5">
-  <div class="panel">
-    <div class="stats">
-      <br><br>
-      <h3>Stats</h3><br>
-      <p>
-        <strong>Card count: </strong><%= current_user.cards.count %>
-      </p>
-      <p>
-        <strong>Case manager: </strong> Placeholder
-      </p>
-      <p>
-        <strong>Progress: </strong> Placeholder
-      </p>
+<% if current_user.provider? %>
+  <div class="col-md-5">
+    <div class="panel">
+      <div class="stats">
+        <br><br>
+        <h3>Stats</h3><br>
+        <p>
+          <strong>Card count: </strong><%= current_user.cards.count %>
+        </p>
+        <p>
+          <strong>Case manager: </strong> Placeholder
+        </p>
+        <p>
+          <strong>Progress: </strong> Placeholder
+        </p>
+      </div>
     </div>
   </div>
+  <div class="col-md-6 col-md-offset-1">
+    <% @cards.each do |card| %>
+    <div class="list-group">
+      <a href="/cards/<%= card.id %>" class="list-group-item">
+        <p class="list-group-item-emotion"><strong>Emotions: </strong>
+          <% @emotions = card.emotions.split(', ') %>
+          <% @emotions.each do |emotion| %>
+            <span class="label label-default"><%= emotion %></span>
+          <% end %>
+        </p>
+        <p class="list-group-item-intensity"><strong>Intensity: </strong><br><%= card.intensity %></p>
+        <p class="list-group-item-thoughts"><strong>Thoughts: </strong><br><%= card.thoughts %></p>
+        <p class="list-group-item-reflection"><strong>Reflection: </strong><br><%= card.reflection %></p>
+      </a>
+      <div class="edit">
+        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_card">Edit</button>
+      </div>
+    </div>
+    <% end %>
 </div>
-<div class="col-md-6 col-md-offset-1">
-  <% @cards.each do |card| %>
-  <div class="list-group">
-    <a href="/cards/<%= card.id %>" class="list-group-item">
-      <p class="list-group-item-emotion"><strong>Emotions: </strong>
-        <% @emotions = card.emotions.split(', ') %>
-        <% @emotions.each do |emotion| %>
-          <span class="label label-default"><%= emotion %></span>
-        <% end %>
-      </p>
-      <p class="list-group-item-intensity"><strong>Intensity: </strong><br><%= card.intensity %></p>
-      <p class="list-group-item-thoughts"><strong>Thoughts: </strong><br><%= card.thoughts %></p>
-      <p class="list-group-item-reflection"><strong>Reflection: </strong><br><%= card.reflection %></p>
-    </a>
-    <div class="edit">
-      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_card">Edit</button>
+<% else %>
+  <div class="col-md-5">
+    <div class="panel">
+      <div class="stats">
+        <br><br>
+        <h3>Stats</h3><br>
+        <p>
+          <strong>Card count: </strong><%= current_user.cards.count %>
+        </p>
+        <p>
+          <strong>Case manager: </strong> Placeholder
+        </p>
+        <p>
+          <strong>Progress: </strong> Placeholder
+        </p>
+      </div>
     </div>
   </div>
-  <% end %>
-</div>
+  <div class="col-md-6 col-md-offset-1">
+    <% @cards.each do |card| %>
+    <div class="list-group">
+      <a href="/cards/<%= card.id %>" class="list-group-item">
+        <p class="list-group-item-emotion"><strong>Emotions: </strong>
+          <% @emotions = card.emotions.split(', ') %>
+          <% @emotions.each do |emotion| %>
+            <span class="label label-default"><%= emotion %></span>
+          <% end %>
+        </p>
+        <p class="list-group-item-intensity"><strong>Intensity: </strong><br><%= card.intensity %></p>
+        <p class="list-group-item-thoughts"><strong>Thoughts: </strong><br><%= card.thoughts %></p>
+        <p class="list-group-item-reflection"><strong>Reflection: </strong><br><%= card.reflection %></p>
+      </a>
+      <div class="edit">
+        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_card">Edit</button>
+      </div>
+    </div>
+    <% end %>
+  </div>
+<% end %>
