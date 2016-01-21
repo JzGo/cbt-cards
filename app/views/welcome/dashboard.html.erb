@@ -13,21 +13,45 @@
         </div>
       </ul>
     <% else %>
-      <ul class="nav nav-pills">
+      <ul class="nav nav-pills" role="pilllist">
         <li class="u-dash" role="presentation" data-toggle="modal" data-target="#new_card"><a href="#">Create Card</a></li>
         <!-- <li class="u-dash" role="presentation"><a href="#">Stats</a></li> -->
-        <li class="u-dash" role="presentation"><a href="#">My Cards</a></li>
-        <li class="u-dash" role="presentation"><a href="#">Settings</a></li>
+        <li class="u-dash active" role="presentation"><a href="#my_cards" aria-controls="my_cards" role="pill" data-toggle="pill">My Cards</a></li>
+        <li class="u-dash" role="presentation"><a href="#settings" aria-controls="settings" role="pill" data-toggle="pill">Settings</a></li>
         <div class="input-group input-group-lg col-md-4">
           <input type="text" class="form-control" placeholder="Last name, First name" aria-describedby="sizing-addon1">
           <span class="input-group-addon" id="sizing-addon1">Search providers</span>
         </div>
       </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="my_cards"><div class="col-md-6 col-md-offset-3">
+          <% @cards.each do |card| %>
+          <div class="list-group">
+            <a href="/cards/<%= card.id %>" class="list-group-item">
+              <p class="list-group-item-emotion"><strong>Emotions: </strong>
+                <% @emotions = card.emotions.split(', ') %>
+                <% @emotions.each do |emotion| %>
+                  <span class="label label-default"><%= emotion %></span>
+                <% end %>
+              </p>
+              <p class="list-group-item-intensity"><strong>Intensity: </strong><br><%= card.intensity %></p>
+              <p class="list-group-item-thoughts"><strong>Thoughts: </strong><br><%= card.thoughts %></p>
+              <p class="list-group-item-reflection"><strong>Reflection: </strong><br><%= card.reflection %></p>
+            </a>
+            <div class="edit">
+              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_card">Edit</button>
+            </div>
+          </div>
+          <% end %>
+        </div></div>
+        <div role="tabpanel" class="tab-pane" id="messages"></div>
+        <div role="tabpanel" class="tab-pane" id="settings">Settings</div>
+      </div>
     <% end %>
   </div>
 </div>
 <br>
-<% if current_user.provider? %>
+<!-- <% if current_user.provider? %>
   <div class="col-md-5">
     <div class="panel">
       <div class="stats">
@@ -103,4 +127,4 @@
     </div>
     <% end %>
   </div>
-<% end %>
+<% end %> -->
