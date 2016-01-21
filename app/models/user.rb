@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
   has_many :cards
 
   enum access: [:user, :provider]
+
+  def self.search(query)
+    where("first_name like ?", "#{query}%")
+  end
 end
