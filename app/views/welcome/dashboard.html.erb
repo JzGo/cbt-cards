@@ -6,12 +6,90 @@
       <ul class="nav nav-pills">
         <li class="u-dash" role="presentation" class="active"><a href="#">Feed</a></li>
         <li class="u-dash" role="presentation"><a href="#">Clients</a></li>
-        <li class="u-dash" role="presentation"><a href="#">Settings</a></li>
+        <li class="u-dash" role="presentation"><a href="#settings" aria-controls="settings" role="pill" data-toggle="pill">Settings</a></li>
         <div class="input-group input-group-lg col-md-4">
           <input type="text" class="form-control" placeholder="Last name, First name" aria-describedby="sizing-addon1">
           <span class="input-group-addon" id="sizing-addon1">Search users</span>
         </div>
-      </ul>
+      </ul><br>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="my_cards"><div class="col-md-6 col-md-offset-3">
+          <% @cards.each do |card| %>
+          <div class="list-group">
+            <a href="/cards/<%= card.id %>" class="list-group-item">
+              <p class="list-group-item-emotion"><strong>Emotions: </strong>
+                <% @emotions = card.emotions.split(', ') %>
+                <% @emotions.each do |emotion| %>
+                  <span class="label label-default"><%= emotion %></span>
+                <% end %>
+              </p>
+              <p class="list-group-item-intensity"><strong>Intensity: </strong><br><%= card.intensity %></p>
+              <p class="list-group-item-thoughts"><strong>Thoughts: </strong><br><%= card.thoughts %></p>
+              <p class="list-group-item-reflection"><strong>Reflection: </strong><br><%= card.reflection %></p>
+            </a>
+            <div class="edit">
+              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_card">Edit</button>
+            </div>
+          </div>
+          <% end %>
+        </div></div>
+        <br>
+        <div role="tabpanel" class="tab-pane" id="stats"><div class="col-md-6 col-md-offset-3">
+          <div class="panel">
+            <div class="stats">
+              <br><br>
+              <h3>Stats</h3><br>
+              <p>
+                <strong>Card count: </strong><%= current_user.cards.count %>
+              </p>
+              <p>
+                <strong>Case manager: </strong> Placeholder
+              </p>
+              <p>
+                <strong>Progress: </strong> Placeholder
+              </p>
+            </div>
+          </div>
+        </div></div>
+        <div role="tabpanel" class="tab-pane" id="settings"><div class="col-md-6 col-md-offset-3">
+          <div class="panel" id="setting-panel">
+            <div class="settings">
+              <h3>Account Settings</h3>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= devise_error_messages! %>
+                <br>
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true %>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+                <div class="field">
+                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "off" %>
+                </div>
+                <br>
+                <div class="actions">
+                  <%= f.submit "Update", { class: "btn btn-primary"} %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div></div>
+      </div>
     <% else %>
       <ul class="nav nav-pills" role="pilllist">
         <li class="u-dash" role="presentation" data-toggle="modal" data-target="#new_card"><a href="#">Create Card</a></li>
