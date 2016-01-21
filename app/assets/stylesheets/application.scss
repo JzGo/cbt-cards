@@ -98,9 +98,12 @@ body {
   height: 275px;
   box-shadow: 0px 2px 10px #888;
 }
-.stats {
+.stats, .settings {
   text-align: center;
 }
 #my_cards {
   padding-left: 25px;
+}
+#setting-panel {
+  height: 450px;
 }

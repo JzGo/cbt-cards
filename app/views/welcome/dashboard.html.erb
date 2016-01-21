@@ -22,7 +22,7 @@
           <input type="text" class="form-control" placeholder="Last name, First name" aria-describedby="sizing-addon1">
           <span class="input-group-addon" id="sizing-addon1">Search providers</span>
         </div>
-      </ul>
+      </ul><br>
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="my_cards"><div class="col-md-6 col-md-offset-3">
           <% @cards.each do |card| %>
@@ -44,6 +44,7 @@
           </div>
           <% end %>
         </div></div>
+        <br>
         <div role="tabpanel" class="tab-pane" id="stats"><div class="col-md-6 col-md-offset-3">
           <div class="panel">
             <div class="stats">
@@ -61,7 +62,44 @@
             </div>
           </div>
         </div></div>
-        <div role="tabpanel" class="tab-pane" id="settings">Settings</div>
+        <div role="tabpanel" class="tab-pane" id="settings"><div class="col-md-6 col-md-offset-3">
+          <div class="panel" id="setting-panel">
+            <div class="settings">
+              <h3>Account Settings</h3>
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+                <%= devise_error_messages! %>
+                <br>
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true %>
+                </div>
+
+                <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                  <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+                <% end %>
+
+                <div class="field">
+                  <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password_confirmation %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+                  <%= f.password_field :current_password, autocomplete: "off" %>
+                </div>
+                <br>
+                <div class="actions">
+                  <%= f.submit "Update", { class: "btn btn-primary"} %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div></div>
       </div>
     <% end %>
   </div>
