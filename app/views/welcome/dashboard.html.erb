@@ -15,8 +15,8 @@
     <% else %>
       <ul class="nav nav-pills" role="pilllist">
         <li class="u-dash" role="presentation" data-toggle="modal" data-target="#new_card"><a href="#">Create Card</a></li>
-        <!-- <li class="u-dash" role="presentation"><a href="#">Stats</a></li> -->
         <li class="u-dash active" role="presentation"><a href="#my_cards" aria-controls="my_cards" role="pill" data-toggle="pill">My Cards</a></li>
+        <li class="u-dash" role=" presentation"><a href="#stats" aria-controls="stats" role="pill" data-toggle="pill">Stats</a></li>
         <li class="u-dash" role="presentation"><a href="#settings" aria-controls="settings" role="pill" data-toggle="pill">Settings</a></li>
         <div class="input-group input-group-lg col-md-4">
           <input type="text" class="form-control" placeholder="Last name, First name" aria-describedby="sizing-addon1">
@@ -44,7 +44,23 @@
           </div>
           <% end %>
         </div></div>
-        <div role="tabpanel" class="tab-pane" id="messages"></div>
+        <div role="tabpanel" class="tab-pane" id="stats"><div class="col-md-6 col-md-offset-3">
+          <div class="panel">
+            <div class="stats">
+              <br><br>
+              <h3>Stats</h3><br>
+              <p>
+                <strong>Card count: </strong><%= current_user.cards.count %>
+              </p>
+              <p>
+                <strong>Case manager: </strong> Placeholder
+              </p>
+              <p>
+                <strong>Progress: </strong> Placeholder
+              </p>
+            </div>
+          </div>
+        </div></div>
         <div role="tabpanel" class="tab-pane" id="settings">Settings</div>
       </div>
     <% end %>
