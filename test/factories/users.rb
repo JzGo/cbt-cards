@@ -10,5 +10,9 @@ FactoryGirl.define do
         cards_count 5
       end
     end
+
+    factory :provider do
+      sequence(:email) { |n| "provider#{n}@example.com"}
+    end
   end
 end
