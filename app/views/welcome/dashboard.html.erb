@@ -11,22 +11,13 @@
       </ul><br>
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="feed"><div class="col-md-6 col-md-offset-3">
-          <% @cards.each do |card| %>
+          <% @clients.each do |client| %>
           <div class="list-group">
-            <a href="/cards/<%= card.id %>" class="list-group-item">
-              <p class="list-group-item-emotion"><strong>Emotions: </strong>
-                <% @emotions = card.emotions.split(', ') %>
-                <% @emotions.each do |emotion| %>
-                  <span class="label label-default"><%= emotion %></span>
-                <% end %>
+            <a href="/users/<%= client.id %>" class="list-group-item">
+              <p class="list-group-item-full-name"><strong>Name: </strong>
+                <%= client.last_name %>, <%= client.first_name %>
               </p>
-              <p class="list-group-item-intensity"><strong>Intensity: </strong><br><%= card.intensity %></p>
-              <p class="list-group-item-thoughts"><strong>Thoughts: </strong><br><%= card.thoughts %></p>
-              <p class="list-group-item-reflection"><strong>Reflection: </strong><br><%= card.reflection %></p>
             </a>
-            <div class="edit">
-              <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_card">Edit</button>
-            </div>
           </div>
           <% end %>
         </div></div>
