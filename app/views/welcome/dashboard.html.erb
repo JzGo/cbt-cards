@@ -10,35 +10,30 @@
         <li class="u-dash" role="presentation"><a href="#settings" aria-controls="settings" role="pill" data-toggle="pill">Settings</a></li>
       </ul><br>
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="feed"><div class="col-md-6 col-md-offset-3">
-          <% @clients.each do |client| %>
-          <div class="list-group">
-            <a href="/users/<%= client.id %>" class="list-group-item">
-              <p class="list-group-item-full-name"><strong>Name: </strong>
-                <%= client.last_name %>, <%= client.first_name %>
-              </p>
-            </a>
-          </div>
-          <% end %>
-        </div></div>
-        <br>
-        <div role="tabpanel" class="tab-pane" id="clients"><div class="col-md-6 col-md-offset-3">
-          <div class="panel">
-            <div class="clients">
-              <br><br>
-              <h3>Stats</h3><br>
-              <p>
-                <strong>Card count: </strong><%= current_user.cards.count %>
-              </p>
-              <p>
-                <strong>Case manager: </strong> Placeholder
-              </p>
-              <p>
-                <strong>Progress: </strong> Placeholder
-              </p>
+        <div role="tabpanel" class="tab-pane" id="feed"><div class="col-md-6 col-md-offset-3">
+            <% @clients.each do |client| %>
+              <a href="/users/<%= client.id %>" class="list-group-item">
+                <p class="list-group-item-full-name"><strong>Name: </strong>
+                  <%= client.last_name %>, <%= client.first_name %>
+                </p>
+                <p class="list-group-item-new-cards"><strong>New Cards: </strong>
+                  <%= client.cards.count %>
+                </p>
+              </a>
             </div>
+            <% end %>
           </div>
-        </div></div>
+        <div role="tabpanel" class="tab-pane" id="clients"><div class="col-md-6 col-md-offset-3">
+            <% @clients.each do |client| %>
+            <div class="list-group">
+              <a href="/users/<%= client.id %>" class="list-group-item">
+                <p class="list-group-item-full-name"><strong>Name: </strong>
+                  <%= client.last_name %>, <%= client.first_name %>
+                </p>
+              </a>
+            </div>
+            <% end %>
+          </div></div>
         <!-- <div role="tabpanel" class="tab-pane" id="client-search"><div class="col-md-6 col-md-offset-3">
           <div class="panel">
             <div class="client-search">
