@@ -1,5 +1,5 @@
 <%= form_tag user_relationship_path(current_user, user), method: "delete" do |f| %>
     <input type="hidden" value="<%= current_user.id %>" name="relationship[follower_id]">
-    <input type="hidden" value="<%= user.id %>" name="relationship[following_id]">
+    <input type="hidden" value="<%= user.id %>" name="relationship[followed_id]">
   <%= submit_tag "Unfollow", :class => 'btn btn-success' %>
 <% end %>
