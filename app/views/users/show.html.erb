@@ -20,5 +20,7 @@
       <li><strong>Last Name: </strong><%= @user.last_name %></li>
       <li><strong>Email: </strong><%= @user.email %></li>
       <li><strong>Card Count: </strong><%= @user.cards.count %></li>
+      <%= follow_or_unfollow @user %><br>
+
   </div>
 </div></div>
