@@ -137,7 +137,10 @@
                 <strong>Card count: </strong><%= current_user.cards.count %>
               </p>
               <p>
-                <strong>Case manager: </strong> Placeholder
+                <strong>Case manager(s): </strong>
+                <% current_user.followers.each do |follower| %>
+                  <%= follower.first_name %>, <%= follower.last_name %>
+                <% end %>
               </p>
               <p>
                 <strong>Progress: </strong> Placeholder
