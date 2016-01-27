@@ -1,6 +1,7 @@
 <div class="content">
   <%= render "shared/nav_btn" %>
   <a class="navbar-brand" id="logo" href="/"><strong>CBT</strong>-Cards</brand></a>
+  <div class="container" id="user-dash">
   <% if current_user.provider? %>
     <ul class="nav nav-pills">
       <li class="u-dash active" role="presentation" class="active"><a href="#feed" aria-controls="feed" role="pill" data-toggle="pill">Feed</a></li>
@@ -9,6 +10,7 @@
       <li class="u-dash" role="presentation"><a href="#settings" aria-controls="settings" role="pill" data-toggle="pill">Settings</a></li>
     </ul><br>
   <% end %>
+  </div>
 </div>
 <br>
 <div class="body">
