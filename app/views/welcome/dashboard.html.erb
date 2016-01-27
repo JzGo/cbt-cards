@@ -1,6 +1,6 @@
 <div class="content">
   <%= render "shared/nav_btn" %>
-  <a class="navbar-brand" id="logo" href="#"><strong>CBT</strong>-Cards</brand></a>
+  <a class="navbar-brand" id="logo" href="/"><strong>CBT</strong>-Cards</brand></a>
   <div class="container" id="user-dash">
     <% if current_user.provider? %>
       <ul class="nav nav-pills">
@@ -11,16 +11,22 @@
       </ul><br>
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="feed"><div class="col-md-6 col-md-offset-3">
+          <% if @clients.empty? %>
+            <div class="stats">
+              <h3>No feed to display.</h3>
+            </div>
+          <% else %>
             <% @clients.each do |client| %>
               <a href="/users/<%= client.id %>" class="list-group-item">
                 <p class="list-group-item-feed"><strong>Name: </strong>
                   <%= client.last_name %>, <%= client.first_name %> <span class="badge">4</span>
-                  </button>
+                </button>
                 </p>
               </a>
-            </div>
             <% end %>
+          <% end %>
           </div>
+        </div>
         <div role="tabpanel" class="tab-pane" id="clients"><div class="col-md-6 col-md-offset-3">
             <% @clients.each do |client| %>
             <div class="list-group">
