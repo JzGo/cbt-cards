@@ -16,6 +16,6 @@ class User < ActiveRecord::Base
   enum access: [:user, :provider]
 
   def self.search(query)
-    where("first_name like ?", "#{query}%")
+    where("email like ?", "#{query}%")
   end
 end

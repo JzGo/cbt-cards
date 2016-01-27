@@ -6,7 +6,7 @@
       <ul class="nav nav-pills">
         <li class="u-dash" role="presentation" class="active"><a href="#feed" aria-controls="feed" role="pill" data-toggle="pill">Feed</a></li>
         <li class="u-dash" role="presentation"><a href="#clients" aria-controls="clients" role="pill" data-toggle="pill">Clients</a></li>
-        <li class="u-dash" role="presentation"><a href="#client-search">Client Search</a></li>
+        <li class="u-dash" role="presentation"><a href="#client-search" aria-controls="client-search" role="pill" data-toggle="pill">Client Search</a></li>
         <li class="u-dash" role="presentation"><a href="#settings" aria-controls="settings" role="pill" data-toggle="pill">Settings</a></li>
       </ul><br>
       <div class="tab-content">
@@ -32,31 +32,31 @@
             </div>
             <% end %>
           </div></div>
-        <!-- <div role="tabpanel" class="tab-pane" id="client-search"><div class="col-md-6 col-md-offset-3">
-          <div class="panel">
+        <div role="tabpanel" class="tab-pane" id="client-search"><div class="col-md-6 col-md-offset-3">
+          <div class="list-group">
             <div class="client-search">
               <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
-                  <%= form_tag("/search", method: "get") do %>
+                  <%= form_tag users_path, method: "get" do %>
                     <%= label_tag(:query, "Search for:") %>
                     <%= text_field_tag(:query) %>
-                    <button type="submit" class="btn btn-info">Submit</button>
+                    <button type="search" class="btn btn-info" id="search">Search</button>
                   <% end %>
                 </div>
               <br><br>
               <h3>Results</h3><br>
               <div class="list-group">
-                <% if @users %>
-                  <% @users.each do |user| %>
-                    <a href="/users/<%= user.id %>" class="list-group-item">
-                      <p class="list-group-item-name"><%= user.last_name + ", " + user.first_name %></p>
+                <% if @client_search %>
+                  <% @client_search.each do |client| %>
+                    <a href="/users/<%= client.id %>" class="list-group-item">
+                      <p class="list-group-item-name"><%= client.last_name + ", " + client.first_name %></p>
                     </a>
                   <% end %>
                 <% end %>
               </div>
             </div>
           </div></div>
-        </div> -->
+        </div>
         <div role="tabpanel" class="tab-pane" id="settings"><div class="col-md-6 col-md-offset-3">
           <div class="panel" id="setting-panel">
             <div class="settings">
