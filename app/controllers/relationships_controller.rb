@@ -1,7 +1,7 @@
 class RelationshipsController < ApplicationController
 
   def create
-
+    Relationship.create(relationship_params)
   end
 
 
