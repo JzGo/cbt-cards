@@ -6,7 +6,6 @@ class WelcomeController < ApplicationController
       @clients = current_user.followeds
       @client_search = User.search(params[:query])
       @results = User.where(access: 0) || @client_search
-      # raise params.inspect
       render 'dashboard'
     end
   end
