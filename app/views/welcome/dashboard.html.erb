@@ -19,7 +19,7 @@
             <% @clients.each do |client| %>
               <a href="/users/<%= client.id %>" class="list-group-item">
                 <p class="list-group-item-feed"><strong>Name: </strong>
-                  <%= client.last_name %>, <%= client.first_name %> <span class="badge">4</span>
+                  <%= client.last_name %>, <%= client.first_name %> <span class="badge"><%= client.cards.count %></span>
                 </button>
                 </p>
               </a>
