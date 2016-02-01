@@ -4,17 +4,35 @@
   <div class="container" id="user-dash">
   <% if current_user.provider? %>
     <ul class="nav nav-pills">
-      <li class="u-dash active" role="presentation" class="active"><a href="#feed" aria-controls="feed" role="pill" data-toggle="pill">Feed</a></li>
-      <li class="u-dash" role="presentation"><a href="#clients" aria-controls="clients" role="pill" data-toggle="pill">Clients</a></li>
-      <li class="u-dash" role="presentation"><a href="#client-search" aria-controls="client-search" role="pill" data-toggle="pill">Client Search</a></li>
-      <li class="u-dash" role="presentation"><a href="#settings" aria-controls="settings" role="pill" data-toggle="pill">Settings</a></li>
+      <li class="u-dash active" role="presentation" class="active"><a href="#client-cards" aria-controls="client-cards" role="pill" data-toggle="pill"><%= @user.first_name + ' ' + @user.last_name  %>'s Cards</a></li>
+      <li class="u-dash" role="presentation"><a href="#client-stats" aria-controls="client-stats" role="pill" data-toggle="pill"><%= @user.first_name + ' ' + @user.last_name  %>'s Stats</a></li>
     </ul><br>
   <% end %>
   </div>
 </div>
 <br>
-<div class="body">
-<div class="tabpanel"><div class="col-md-8 col-md-offset-2">
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="client-cards"><div class="col-md-6 col-md-offset-3">
+  <% @user.cards.each do |card| %>
+  <div class="list-group">
+    <a href="/cards/<%= card.id %>" class="list-group-item">
+      <p class="list-group-item-emotion"><strong>Emotions: </strong>
+        <% @emotions = card.emotions.split(', ') %>
+        <% @emotions.each do |emotion| %>
+          <span class="label label-default"><%= emotion %></span>
+        <% end %>
+      </p>
+      <p class="list-group-item-intensity"><strong>Intensity: </strong><br><%= card.intensity %></p>
+      <p class="list-group-item-thoughts"><strong>Thoughts: </strong><br><%= card.thoughts %></p>
+      <p class="list-group-item-reflection"><strong>Reflection: </strong><br><%= card.reflection %></p>
+    </a>
+    <div class="edit">
+      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#edit_card">Edit</button>
+    </div>
+  </div>
+  <% end %>
+</div></div>
+<div role="tabpanel" class="tab-pane" id="client-stats"><div class="col-md-8 col-md-offset-2">
   <div class="panel">
     <h2 class="user-heading">Viewing, <%= @user.first_name %> <%= @user.last_name %>'s Profile</h2><br>
     <ul class="profile">
@@ -26,3 +44,4 @@
       <%= follow_or_unfollow @user %><br>
   </div>
 </div></div>
+</div>
