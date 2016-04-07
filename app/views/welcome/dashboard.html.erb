@@ -11,6 +11,9 @@
       </ul><br>
       <div class="tab-content">
         <div role="tabpanel" class="tab-pane active" id="status-feed"><div class="col-md-6 col-md-offset-3">
+          </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="clients"><div class="col-md-6 col-md-offset-3">
           <% if @clients.empty? %>
             <div class="stats">
               <h3>No feed to display.</h3>
@@ -20,24 +23,11 @@
               <a href="/users/<%= client.id %>" class="list-group-item">
                 <p class="list-group-item-feed"><strong>Name: </strong>
                   <%= client.last_name %>, <%= client.first_name %> <span class="badge"><%= client.cards.count %> new cards</span>
-                </button>
                 </p>
               </a>
             <% end %>
           <% end %>
-          </div>
-        </div>
-        <div role="tabpanel" class="tab-pane" id="clients"><div class="col-md-6 col-md-offset-3">
-            <% @clients.each do |client| %>
-            <div class="list-group">
-              <a href="/users/<%= client.id %>" class="list-group-item">
-                <p class="list-group-item-full-name"><strong>Name: </strong>
-                  <%= client.last_name %>, <%= client.first_name %>
-                </p>
-              </a>
-            </div>
-            <% end %>
-          </div></div>
+        </div></div>
         <div role="tabpanel" class="tab-pane" id="client-search"><div class="col-md-6 col-md-offset-3">
           <div class="list-group">
             <div class="client-search">
