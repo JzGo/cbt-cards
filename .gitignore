@@ -14,3 +14,4 @@
 config/database.yml
 Guardfile
 db/schema.rb
+coverage/
