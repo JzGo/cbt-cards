@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   def self.client_feed provider
     feed = []
     provider.followeds.each do |client|
-      feed << { name: client.full_name, cards: client.cards.where("created_at > ?", provider.last_sign_in_at) }
+      feed << { client_id: client.id, name: client.full_name, cards: client.cards.where("created_at > ?", provider.last_sign_in_at) }
     end
     feed
   end
