@@ -22,7 +22,10 @@
             <% @clients.each do |client| %>
               <a href="/users/<%= client[:client_id] %>" class="list-group-item">
                 <p class="list-group-item-feed"><strong>Name: </strong>
-                  <%= client[:name] %> <span class="badge"><%= client[:cards].count %> new cards</span>
+                  <%= client[:name] %>
+                  <% unless client[:cards].count == 0 %>
+                    <span class="badge"><%= client[:cards].count %> new cards</span>
+                  <% end%>
                 </p>
               </a>
             <% end %>
