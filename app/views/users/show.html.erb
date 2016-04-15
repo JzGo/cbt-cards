@@ -4,8 +4,8 @@
   <div class="container" id="user-dash">
     <% if current_user.provider? %>
       <ul class="nav nav-pills" role="pilllist">
-        <li class="u-dash" role="presentation" data-toggle="modal" data-target="#new_goal"><a href="#">New Weekly Goal</a</li>
         <li class="u-dash active" role="presentation" class="active"><a href="#client-cards" aria-controls="client-cards" role="pill" data-toggle="pill"><%= @user.first_name + ' ' + @user.last_name  %>'s Cards</a></li>
+        <li class="u-dash" role="presentation"><a href="#weekly-goal" aria-controls="client-goal" role="pill" data-toggle="pill">Weekly Goal</a</li>
         <li class="u-dash" role="presentation"><a href="#client-stats" aria-controls="client-stats" role="pill" data-toggle="pill"><%= @user.first_name + ' ' + @user.last_name  %>'s Stats</a></li>
       </ul><br>
       <div class="tab-content">
@@ -29,10 +29,16 @@
           </div>
           <% end %>
         </div></div>
+        <div role="tabpanel" class="tab-pane" id="weekly-goal"><div class="col-md-8 col-md-offset-2">
+          <div class="panel">
+            <br>
+            <h2 class="user-heading"><%= @user.full_name %>'s Goal Settings</h2><br>
+          </div>
+       </div></div>
         <div role="tabpanel" class="tab-pane" id="client-stats"><div class="col-md-8 col-md-offset-2">
           <div class="panel">
             <br>
-            <h2 class="user-heading"><%= @user.first_name %> <%= @user.last_name %>'s Profile</h2><br>
+            <h2 class="user-heading"><%= @user.full_name %>'s Profile</h2><br>
             <ul class="profile">
               <li><strong>First Name: </strong><%= @user.first_name %></li>
               <li><strong>Last Name: </strong><%= @user.last_name %></li>
