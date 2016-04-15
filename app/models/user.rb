@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
 
   has_many :cards
+  has_one :goal
 
   enum access: [:user, :provider]
 
