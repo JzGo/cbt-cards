@@ -1,8 +1,8 @@
 <div class="content">
   <%= render "shared/nav_btn" %>
-  <a class="navbar-brand" id="logo" href="/"><strong>CBT</strong>-Cards</brand></a>
-  <div class="container" id="user-dash">
-    <% if current_user.provider? %>
+  <% if current_user.provider? %>
+    <a class="navbar-brand" id="logo" href="/"><strong>CBT</strong>-Cards</brand><small> Provider</small></a>
+    <div class="container" id="user-dash">
       <ul class="nav nav-pills" role="pilllist">
         <li class="u-dash active" role="presentation" class="active"><a href="#client-cards" aria-controls="client-cards" role="pill" data-toggle="pill"><%= @user.first_name + ' ' + @user.last_name  %>'s Cards</a></li>
         <li class="u-dash" role="presentation"><a href="#weekly-goal" aria-controls="client-goal" role="pill" data-toggle="pill">Weekly Goal</a</li>

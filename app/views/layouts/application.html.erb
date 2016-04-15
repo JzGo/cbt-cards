@@ -14,6 +14,7 @@
 <%= render "welcome/sign_up_modal" %>
 <% if current_user && current_user.provider? && @user %>
 <%= render "users/new_goal" %>
+<%= render "users/edit_goal" %>
 <% elsif current_user %>
   <%= render "shared/new_card" %>
 <% end %>

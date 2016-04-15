@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @cards = @user.cards.sort_by(&:created_at).reverse
+    @goal = @user.goal
   end
 
   private
