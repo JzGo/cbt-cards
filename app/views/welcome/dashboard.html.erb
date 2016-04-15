@@ -24,7 +24,7 @@
                 <p class="list-group-item-feed"><strong>Name: </strong>
                   <%= client[:name] %>
                   <% unless client[:cards].count == 0 %>
-                    <span class="badge"><%= client[:cards].count %> new cards</span>
+                    <span class="badge"><%= pluralize(client[:cards].count, 'new card') %></span>
                   <% end%>
                 </p>
               </a>
