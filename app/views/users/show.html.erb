@@ -4,6 +4,7 @@
   <div class="container" id="user-dash">
     <% if current_user.provider? %>
       <ul class="nav nav-pills" role="pilllist">
+        <li class="u-dash" role="presentation" data-toggle="modal" data-target="#new_goal"><a href="#">New Weekly Goal</a</li>
         <li class="u-dash active" role="presentation" class="active"><a href="#client-cards" aria-controls="client-cards" role="pill" data-toggle="pill"><%= @user.first_name + ' ' + @user.last_name  %>'s Cards</a></li>
         <li class="u-dash" role="presentation"><a href="#client-stats" aria-controls="client-stats" role="pill" data-toggle="pill"><%= @user.first_name + ' ' + @user.last_name  %>'s Stats</a></li>
       </ul><br>
