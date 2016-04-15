@@ -10,9 +10,32 @@
         <li class="u-dash" role="presentation"><a href="#client-search" aria-controls="client-search" role="pill" data-toggle="pill">Client Search</a></li>
       </ul><br>
       <div class="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="status-feed"><div class="col-md-6 col-md-offset-3">
-          </div>
-        </div>
+        <div role="tabpanel" class="tab-pane active" id="status-feed"><div class="col-md-8 col-md-offset-2">
+          <% if @status_feed.empty? %>
+            <div class="stats">
+              <h3>No feed to display.</h3>
+            </div>
+          <% else %>
+            <% @status_feed.each do |client| %>
+              <a href="/users/<%= client.id %>" class="list-group-item">
+                <p class="list-group-item-feed">
+                  <strong>Name: </strong><%= client.full_name %><br><br>
+                  <strong>Progress for: </strong>
+                  <% if client.goal %>
+                    <%= "#{client.goal.start_date.to_date.to_formatted_s(:long)} - #{client.goal.end_date.to_date.to_formatted_s(:long)}"  %>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= client.goal_count %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= client.goal_count %>%">
+                        <%= client.goal_count %>%
+                      </div>
+                    </div>
+                  <% else %>
+                    <p><em>No weekly goal set.</em></p>
+                  <% end %>
+                </p>
+              </a>
+            <% end %>
+          <% end %>
+        </div></div>
         <div role="tabpanel" class="tab-pane" id="clients"><div class="col-md-6 col-md-offset-3">
           <% if @clients.empty? %>
             <div class="stats">
@@ -146,10 +169,10 @@
               <p><strong>Progress: </strong></p>
               <% if current_user.goal %>
                 <p>
-                  <%= "#{current_user.goal.start_date.to_date} - #{current_user.goal.end_date.to_date}"  %>
+                  <%= "#{current_user.goal.start_date.to_date.to_formatted_s(:long)} - #{current_user.goal.end_date.to_date.to_formatted_s(:long)}"  %>
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%">
-                      40% Complete (success)
+                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<%= current_user.goal_count %>" aria-valuemin="0" aria-valuemax="100" style="width:<%= current_user.goal_count %>%">
+                      <%= current_user.goal_count %>%
                     </div>
                   </div>
                 </p><br>

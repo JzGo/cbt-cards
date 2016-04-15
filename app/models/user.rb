@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
     feed
   end
 
+  def goal_count
+    ((cards.where(created_at: (goal.start_date)..(goal.end_date)).count.to_f / goal.card_count.to_f) * 100).round
+  end
 
   def full_name
     "#{first_name} #{last_name}"

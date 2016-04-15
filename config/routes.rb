@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
   resources :users do
     resources :cards
+    resources :goals
   end
 
   resources :relationships
