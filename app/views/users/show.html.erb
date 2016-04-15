@@ -29,10 +29,14 @@
           </div>
           <% end %>
         </div></div>
-        <div role="tabpanel" class="tab-pane" id="weekly-goal"><div class="col-md-8 col-md-offset-2">
+        <div role="tabpanel" class="tab-pane" id="weekly-goal"><div class="col-md-6 col-md-offset-3">
           <div class="panel">
-            <br>
-            <h2 class="user-heading"><%= @user.full_name %>'s Goal Settings</h2><br>
+            <div class="stats">
+              <br>
+              <h2><%= @user.full_name %>'s Goal Settings</h2><br>
+              <p><strong>Weekly Goal:</strong> 5 Cards</p>
+              <!-- <p><strong>Weekly Goal: <%= pluralize(@user.cards.count, 'card') %></strong></p> -->
+            </div>
           </div>
        </div></div>
         <div role="tabpanel" class="tab-pane" id="client-stats"><div class="col-md-8 col-md-offset-2">
